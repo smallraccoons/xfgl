@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.xfgl.firecontrol.mapper.FireControlSubmitMapper">
+
+    <select id="selectByHomeId" resultType="com.cc.xfgl.model.firecontrol.FireControlSubmit">
+        SELECT * from submit_info a
+        where a.update_time = (select max(update_time) from submit_info where home_id = #{homeId} )
+        and a.home_id = #{homeId}
+    </select>
+</mapper>
